@@ -52,17 +52,10 @@ require('domready')(function () {
 
 
     function agrChckMapper (node) {
-        const agrClickStream    = streamChecked(node);
-
-        const agrEnabledStream  = agrClickStream
-                  .filter((x) => { return x; })
-                  .map({ name: 'enabled' });
-
-        const agrDisabledStream = agrClickStream
-                  .filter((x) => { return !x; })
-                  .map({ name: 'disabled' });
-
-        return bacon.mergeAll(agrEnabledStream, agrDisabledStream);
+        return streamChecked(node)
+            .map((x) => {
+                return { name: x ? 'enabled' : 'disabled' };
+            });
     }
 
     
