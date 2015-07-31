@@ -65,13 +65,6 @@ require('domready')(function () {
 
     
     // ----------------------------- BEHAVIOUR ------------------------------ //
-    function streamChecked (node) {
-        return bacon
-            .fromEvent(node, 'change')
-            .map((e) => { return e.target.checked; });
-    }
-    
-
     function disableAgrCheckbox () {
         document
             .querySelector(chckSel) 
@@ -108,4 +101,14 @@ require('domready')(function () {
             });
         });
     }
+    
+
+    // ----------------------------- UTILS ---------------------------------- //
+    function streamChecked (node) {
+        return bacon
+            .fromEvent(node, 'change')
+            .map((e) => { return e.target.checked; });
+    }
+    
+
 });
