@@ -1,0 +1,42 @@
+{
+  "name": "learn-internjs",
+  "version": "0.0.1",
+  "description": "My experiments with InternJS",
+  "main": "index.js",
+  "scripts": {
+    "build": "gulp build",
+    "server": "hs --cors",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/AZaviruha/learn-internjs.git"
+  },
+  "author": "a.zaviruha",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/AZaviruha/learn-internjs/issues"
+  },
+  "homepage": "https://github.com/AZaviruha/learn-internjs",
+  "devDependencies": {
+    "babel": "^5.8.9",
+    "babelify": "^6.1.3",
+    "browserify": "^11.0.0",
+    "gulp": "^3.9.0",
+    "gulp-shell": "^0.4.2",
+    "gulp-sourcemaps": "^1.5.2",
+    "http-server": "^0.8.0",
+    "intern": "^2.2.2",
+    "vinyl-buffer": "^1.0.0",
+    "vinyl-source-stream": "^1.1.0",
+    "watchify": "^3.3.0",
+    "yargs": "^3.15.0"
+  },
+  "dependencies": {
+    "baconjs": "^0.7.70",
+    "domready": "^1.0.8",
+    "jquery": "^2.1.4",
+    "js-csp": "^0.4.1",
+    "react": "^0.13.3"
+  }
+}
