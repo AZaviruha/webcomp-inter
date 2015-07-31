@@ -4,9 +4,16 @@ import * as utils from './lib/utils';
 const bacon = require('baconjs');
 
 require('domready')(function () {
-    const btnSel  = 'register-button#comp1';
-    const chckSel = 'agreement-checkbox#comp2';
+    const btnSel     = 'register-button#comp1';
+    const chckSel    = 'agreement-checkbox#comp2';
+    const enableBtn  = switchRegisterBtn.bind(null, '0');
+    const disableBtn = switchRegisterBtn.bind(null, '1');
 
+
+    /**
+     * Собственно, весь "медитор" - здесь.
+     * Все взаимосвязи между компонентами собраны в одном месте.
+     */
     dispatch({
         'register-button#comp1': [{
             'clicked'            : disableAgrCheckbox,
@@ -14,8 +21,8 @@ require('domready')(function () {
         }, regButtonMapper],
 
         'agreement-checkbox#comp2': [{
-            'enabled'  : switchRegisterBtn.bind(null, '0'),
-            'disabled' : switchRegisterBtn.bind(null, '1')
+            'enabled'  : enableBtn,
+            'disabled' : disableBtn
         }, agrChckMapper]
     });
      
