@@ -100,10 +100,9 @@ require('domready')(function () {
     // ----------------------------- MEDIATOR LIBRARY ----------------------- //
     function dispatch(scheme) {
         Object.keys(scheme).forEach(function (sel) {
-            let component = scheme[sel];
-            let events    = component[0];
-            let mapper    = component[1];
-            let node      = document.querySelector(sel);
+            let component         = scheme[sel];
+            let [events, mapper]  = component;
+            let node              = document.querySelector(sel);
 
             mapper(node).onValue((e) => { 
                 console.log('mapper value :: ', e );
