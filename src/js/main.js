@@ -1,6 +1,5 @@
 // require('babel/polyfill');
 
-import * as utils from './lib/utils';
 const bacon = require('baconjs');
 
 require('domready')(function () {
