@@ -2,135 +2,13 @@
 <html lang="ru">
     <head>
         <meta charset="UTF-8" />
-        <title>WebComponents intercommunication</title>
+        <title>4game embdedded</title>
     </head>
 
-	<script src="./js/lib/widgets.js"></script>
-	<script src="../node_modules/react/dist/react.js"></script>
     <body>
-        <script>
-            WebComponents.render.register(function(target, uvdom, done, parser) {
-                var vdom = parser.uvdomToReact(uvdom);
-                React.render(React.createElement(vdom.type, vdom.props), target, done);
-            });
-
-            
-            /**
-             * Компонент <register-button />
-             * Позволяет зарегистрировать пользователя в один клик.
-             * 
-             * ------------------------------------------------
-             * Events API:
-             *
-             * "click"              - ...
-             * "register-completed" - ajax-запрос регистрации успешно завершен
-             *
-             * ------------------------------------------------
-             * Model props:
-             *
-             * "name"       - ...
-             * "isDisabled" - принимает значения "0" и "1", и соответственно,
-             *                включает или выключает кнопку
-             */
-            WebComponents({
-                name: 'register-button',
-                hostAttributes: ['name'],
-                model: {
-                    name: 'register-button',
-                    isDisabled: ''
-                },
-                template: function(model) {
-                    return {
-                        tag: 'button',
-                        attrs: {
-                            className: 'register-button',
-                            disabled: 'disabled'
-                        },
-                        children: 'Sign Up'
-                    };
-                },
-                events: {
-                    'click .register-button': function(element, event) {
-                        var prop = document.querySelector('register-button-model')
-                                           .querySelector('content[name="isDisabled"]');
-
-                        prop.textContent = '1';
-                        setTimeout(function () {
-                            console.log( 'register-button component :: ajax request send' );
-                        }, 500 );
-
-                        setTimeout(function () {
-                            console.log( 'register-button component :: ajax response received' );
-                        }, 1000 );
-
-                        setTimeout(function () {
-                            console.log( 'register-button component :: registration complete' );
-                            prop.textContent = '0';
-                             
-                            /** ------------------------------------------------- **/
-                            /** Custom Event trigger                              **/
-                            /** ------------------------------------------------- **/
-                            //var btn = document.querySelector('register-button' );
-                            if (window.CustomEvent) {
-                                var event = new CustomEvent('register-completed', {});
-                            } else {
-                                var event = document.createEvent('CustomEvent');
-                                event.initCustomEvent('register-completed', true, true, {});
-                            }
-                            element.dispatchEvent(event);
-                        }, 1500 );
-                    }
-                },
-                created: function() {
-                    console.log( 'button created :: ', arguments );
-                },
-                modelChanged: function(propName, prevValue, value) {
-                    var node;
-
-                    if ( propName === 'isDisabled' ) {
-                        node = document.querySelector( 'register-button button' );
-
-                        if ( value.textContent === '1' ) {
-                            node.setAttribute( 'disabled', 'disabled' );
-                        } else {
-                            node.removeAttribute( 'disabled' );
-                        }
-
-                    }
-                }
-            });
-         
-
-            WebComponents({
-                name: 'agreement-checkbox',
-                hostAttributes: ['name'],
-                model: {
-                    name: 'agreement-checkbox'
-                },
-                template: function(model) {
-                    return {
-                        tag: 'input',
-                        attrs: {
-                            type: 'checkbox',
-                            className: '.agreement-checkbox'
-                        }
-                    };
-                },
-                events: {
-                    'click .agreement-checkbox': function(element, event) {
-                        console.log( 'agreement-checkbox :: click' );
-                    }
-                },
-                modelChanged: function(propName, prevValue, value) {
-                }
-            });
-        </script>
-
-
-        <register-button id="comp1"></register-button> |
-        <agreement-checkbox id="comp2"></agreement-checkbox>
-
-
+        <script src="http://cdn.ractivejs.org/latest/ractive.min.js"></script>
         <script src="../dist/bundle.js"></script>
+        
+        <div id="app"></div>
     </body>
 </html>
