@@ -16,10 +16,16 @@ var model = {
     }
 };
 
+
 var template = '';
 
 export default {
     load(appId) {
+        model.login = '';
+        model.passw = '';
+        model.errors.emptyLogin = false;
+        model.errors.emptyPassw = false;
+
         return fetch('/src/templates/signIn.html')
             .then((resp) => { return resp.text(); })
             .then((tmpl) => {
@@ -30,18 +36,18 @@ export default {
 
     bindEvents(FSM) {
         return new Promise(function (resolve, reject) {
-            dom('#sign-in-back').on('click', FSM.goBack.bind(FSM));
-            dom('#sign-in-vk').on('click', FSM.showSignVK.bind(FSM));
-            dom('#sign-in-fb').on('click', FSM.showSignFB.bind(FSM));
-
-            handleSignInPhone(FSM);
+            handleSignIn(FSM);
             resolve(true);
         });
     }
 };
 
 
-function handleSignInPhone (FSM) {
+function handleSignIn (FSM) {
+    dom('#sign-in-back').on('click', FSM.goBack.bind(FSM));
+    dom('#sign-in-vk').on('click', FSM.showSignVK.bind(FSM));
+    dom('#sign-in-fb').on('click', FSM.showSignFB.bind(FSM));
+
     dom('#sign-in-phone').on('click', function () {
         const login = dom('#login').val();
         const passw = dom('#password').val();
@@ -52,7 +58,7 @@ function handleSignInPhone (FSM) {
 
         if (!login || !passw) {
             dom('#app').html(Mustache.render(template, model));
-            handleSignInPhone(FSM);
+            handleSignIn(FSM);
         } else {
             FSM.goBack();
         }

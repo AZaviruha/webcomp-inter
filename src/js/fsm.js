@@ -1,14 +1,16 @@
 const Machina = require('machina');
 const log     = require('front-log');
-window.log = log;
+log.setLevel(log.LEVELS.DEBUG);
 
 import * as teaserForm from './forms/teaser';
 import * as signInForm from './forms/signIn';
+import * as signUpForm from './forms/signUp';
 
 
 const FORMS = {
     'teaserForm' : teaserForm,
-    'signInForm' : signInForm
+    'signInForm' : signInForm,
+    'signUpForm' : signUpForm
 };
 
 
@@ -33,6 +35,7 @@ export const FSM = new Machina.Fsm({
             }
         },
 
+        // ======================= Game Teaser ================== //
         'teaserForm:loading': {
             _onEnter : loadAndGoto('teaserForm', 'teaserForm:ready')
         },
@@ -45,6 +48,7 @@ export const FSM = new Machina.Fsm({
             'sign-up' : 'signUpForm:loading'
         },
 
+        // ======================= Sign In ====================== //
         'signInForm:loading': {
             _onEnter : loadAndGoto('signInForm', 'signInForm:ready')
         },
@@ -53,10 +57,10 @@ export const FSM = new Machina.Fsm({
             _onEnter : bindAndWait('signInForm'),
 
             /** Events **/
-            'back'   : 'teaserForm:loading',
-            'vk'     : 'signInVKForm:loading',
-            'fb'     : 'signInFBForm:loading',
-            'phone'  : 'signInPhoneForm:loading'
+            'back'  : 'teaserForm:loading',
+            'vk'    : 'signInVKForm:loading',
+            'fb'    : 'signInFBForm:loading',
+            'phone' : 'signInPhoneForm:loading'
         },
         
         'signInVKForm:loading': {
@@ -67,7 +71,7 @@ export const FSM = new Machina.Fsm({
             _onEnter : noOp,
 
             /** Events **/
-            'back'   : 'teaserForm:loading'
+            'back'  : 'teaserForm:loading'
         },
 
         'signInFBForm:loading': {
@@ -78,25 +82,48 @@ export const FSM = new Machina.Fsm({
             _onEnter : noOp,
 
             /** Events **/
-            'back'   : 'teaserForm:loading'
+            'back'  : 'teaserForm:loading'
         },
 
-        'signInPhoneForm:loading': {
-            _onEnter : noOp
-        },
-
-        'signInPhoneForm:ready': {
-            _onEnter : noOp
-        },
-
+        
+        // ======================= Sign Up ====================== //
         'signUpForm:loading': {
             _onEnter : loadAndGoto('signUpForm', 'signUpForm:ready')
         },
 
         'signUpForm:ready': {
-            _onEnter:  bindAndWait('signUpForm')
+            _onEnter:  bindAndWait('signUpForm'),
+
+            /** Events **/
+            'back'  : 'teaserForm:loading',
+            'vk'    : 'signUpVKForm:loading',
+            'fb'    : 'signUpFBForm:loading',
+            'phone' : 'signUpPhoneForm:loading'
+        },
+
+        'signUpVKForm:loading': {
+            _onEnter : fakeLoadAndGoto('signUpVKForm:ready')
+        },
+
+        'signUpVKForm:ready': {
+            _onEnter : noOp,
+
+            /** Events **/
+            'back'  : 'teaserForm:loading'
+        },
+
+        'signUpFBForm:loading': {
+            _onEnter : fakeLoadAndGoto('signUpFBForm:ready')
+        },
+
+        'signUpFBForm:ready': {
+            _onEnter : noOp,
+
+            /** Events **/
+            'back'  : 'teaserForm:loading'
         },
         
+        // ======================= Errors ======================= //
         'globalErrorShown': {
             _onEnter: function () {
                 console.error('Something bad happens...');
@@ -118,7 +145,6 @@ export const FSM = new Machina.Fsm({
 function handle(eventName) {
     return function (...args) { 
         log.debug(`FSM :: <<===== :: "${eventName}" event`);
-        // log.debug('args :: ', args);
         this.handle(eventName); 
     };
 }
@@ -154,8 +180,6 @@ function bindAndWait(formID) {
 function fakeLoadAndGoto(state) {
     return function () {
         var self = this;
-        setTimeout(function () {
-            self.transition(state);
-        },1000);
+        setTimeout(function () { self.transition(state); }, 1000);
     };
 }
