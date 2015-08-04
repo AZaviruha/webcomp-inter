@@ -131,8 +131,8 @@ export const FSM = new Machina.Fsm({
         }
     },
 
+    run           : handle('any-event-to-run-fsm'),
     showError     : handle('globalErrorShown'),
-    showTeaser    : handle('teaserForm:loading'),
     goBack        : handle('back'),
     showSignIn    : handle('sign-in'),
     showSignUp    : handle('sign-up'),
