@@ -1,40 +1,80 @@
 require('whatwg-fetch');
 const Mustache = require('mustache');
 
+
+/**
+ * Эмулирует модель веб-компонента
+ */
+var model = { 
+    signInMsg: 'Войти',
+    signUpMsg: 'Зарегистрироваться',
+    login: '',
+    passw: '',
+    errors: {
+        emptyLogin: false,
+        emptyPassw: false
+    }
+};
+
+var template = '';
+
 export default {
     load(appId) {
-        var view = { appId: appId };
-
         return fetch('/src/templates/signIn.html')
             .then((resp) => { return resp.text(); })
             .then((tmpl) => {
-                // Mustache.parse(tmpl);   // optional, speeds up future uses
-                const rendered = Mustache.render(tmpl, view);
-                document.getElementById('app').innerHTML = rendered;
+                template = tmpl;
+                dom('#app').html(Mustache.render(template, model));
             });
     },
 
     bindEvents(FSM) {
-        console.log( 'signInForm.bindEvents :: starts' );
         return new Promise(function (resolve, reject) {
-            document
-                .getElementById('sign-in-back')
-                .addEventListener('click', FSM.goBack.bind(FSM));
+            dom('#sign-in-back').on('click', FSM.goBack.bind(FSM));
+            dom('#sign-in-vk').on('click', FSM.showSignVK.bind(FSM));
+            dom('#sign-in-fb').on('click', FSM.showSignFB.bind(FSM));
 
-            document
-                .getElementById('sign-in-vk')
-                .addEventListener('click', FSM.showSignVK.bind(FSM));
-
-            document
-                .getElementById('sign-in-fb')
-                .addEventListener('click', FSM.showSignFB.bind(FSM));
-
-            document
-                .getElementById('sign-in-phone')
-                .addEventListener('click', FSM.showSignPhone.bind(FSM));
-
+            handleSignInPhone(FSM);
             resolve(true);
         });
     }
 };
 
+
+function handleSignInPhone (FSM) {
+    dom('#sign-in-phone').on('click', function () {
+        const login = dom('#login').val();
+        const passw = dom('#password').val();
+        model.login = login;
+        model.passw = passw;
+        model.errors.emptyLogin = !login;
+        model.errors.emptyPassw = !passw;
+
+        if (!login || !passw) {
+            dom('#app').html(Mustache.render(template, model));
+            handleSignInPhone(FSM);
+        } else {
+            FSM.goBack();
+        }
+    });
+}
+
+
+function dom(sel) {
+    const el = document.querySelector(sel);
+    return {
+        on(e, f) {
+            el.addEventListener(e, f);
+            return this;
+        },
+        html(text) {
+            el.innerHTML = text;
+            return this;
+        },
+        val(v) { 
+            if (v) el.value = v;
+            return el.value; 
+        },
+        el: el
+    };
+}

@@ -1,4 +1,6 @@
 const Machina = require('machina');
+const log     = require('front-log');
+window.log = log;
 
 import * as teaserForm from './forms/teaser';
 import * as signInForm from './forms/signIn';
@@ -12,9 +14,15 @@ const FORMS = {
 
 export const FSM = new Machina.Fsm({
     initialize: function (options) {
-        console.log( 'fsm :: initialize() :: ', options );
+        const oldTrans = this.transition;
+        this.transition = function (...args) {
+            const state = (args.length > 1) && args[1] ? args[1] : args[0];
+            log.debug(`FSM :: =====>> :: "${state}" state`);
+            oldTrans.apply(this, args);
+        };
     },
 
+    // --------------------------------------------------- //
     initialState: 'uninitialized',
 
     states: {
@@ -31,6 +39,8 @@ export const FSM = new Machina.Fsm({
 
         'teaserForm:ready': {
             _onEnter  : bindAndWait('teaserForm'),
+            
+            /** Events **/
             'sign-in' : 'signInForm:loading',
             'sign-up' : 'signUpForm:loading'
         },
@@ -41,6 +51,8 @@ export const FSM = new Machina.Fsm({
 
         'signInForm:ready': {
             _onEnter : bindAndWait('signInForm'),
+
+            /** Events **/
             'back'   : 'teaserForm:loading',
             'vk'     : 'signInVKForm:loading',
             'fb'     : 'signInFBForm:loading',
@@ -48,14 +60,32 @@ export const FSM = new Machina.Fsm({
         },
         
         'signInVKForm:loading': {
-            _onEnter : noOp
+            _onEnter : fakeLoadAndGoto('signInVKForm:ready')
+        },
+
+        'signInVKForm:ready': {
+            _onEnter : noOp,
+
+            /** Events **/
+            'back'   : 'teaserForm:loading'
         },
 
         'signInFBForm:loading': {
-            _onEnter : noOp
+            _onEnter : fakeLoadAndGoto('signInFBForm:ready')
+        },
+
+        'signInFBForm:ready': {
+            _onEnter : noOp,
+
+            /** Events **/
+            'back'   : 'teaserForm:loading'
         },
 
         'signInPhoneForm:loading': {
+            _onEnter : noOp
+        },
+
+        'signInPhoneForm:ready': {
             _onEnter : noOp
         },
 
@@ -86,7 +116,11 @@ export const FSM = new Machina.Fsm({
 
 
 function handle(eventName) {
-    return function () { this.handle(eventName); };
+    return function (...args) { 
+        log.debug(`FSM :: <<===== :: "${eventName}" event`);
+        // log.debug('args :: ', args);
+        this.handle(eventName); 
+    };
 }
 
 
@@ -116,3 +150,12 @@ function bindAndWait(formID) {
     };
 }
 
+
+function fakeLoadAndGoto(state) {
+    return function () {
+        var self = this;
+        setTimeout(function () {
+            self.transition(state);
+        },1000);
+    };
+}

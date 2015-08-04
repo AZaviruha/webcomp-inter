@@ -1,13 +1,101 @@
-<section class="ButtonBar">
-    <section>
-        <button id="sign-in-back">Назад</button>
-        <h3>Выбери правильный вариант<h3>
-    </section>
-
-    <section>
-        <button id="sign-in-vk">Вконтакте</button>
-        <button id="sign-in-fb">Facebook</button>
-        <button id="sign-in-phone">Телефон</button>
-    </section>
+<section class="NavBar" style="display:block;">
+    <span class="NavBar--LeftButton" id="sign-in-back" style="cursor:pointer;">Назад</span>
+    <h1 class="NavBar--Title">Вход</h1>
+    <span class="NavBar--RightButton"></span>
 </section>
 
+	
+<section class="Content">
+    <div class="Content--Inner">
+		<div class="Form">
+			<p class="Content--Icon Content--Icon-Margin-bottom">
+				<img class="Content--Icon4Game" src="public/b/ButtonSet/4game-logo.png" width="66" height="65" alt="4game">
+			</p>
+
+			<div class="ButtonSet--Horizontal">
+					<div class="ButtonSet--HorizontalForm ButtonSet--HorizontalForm-Type-vkontakte">
+                        <button id="sign-in-vk" 
+                                class="Button Button-Type-vkontakte Button-Icon-vkontakte">
+                            <span class="Button--Text">ВКонтакте</span>
+                        </button>
+					</div>
+
+					<div class="ButtonSet--HorizontalForm ButtonSet--HorizontalForm-Type-facebook">
+                        <button id="sign-in-fb" 
+                                class="Button Button-Type-facebook Button-Icon-facebook">
+                            <span class="Button--Text">Фейсбук</span>
+                        </button>
+					</div>
+			</div>
+
+			<div class="Form--FieldsetWrap">
+				<div class="Form--Fieldset Form--Fieldset-Bottom-noPadding Form-ButtonSpin-true">
+					<div class="Input--ErrorBlock">
+						<p class="Input--ErrorMsg">Акаунт заблокирован!</p>
+
+                        {{#errors.emptyLogin}}
+						<p class="Input--ErrorMsg" style="display:block;">Логин не может быть пустым</p>
+                        {{/errors.emptyLogin}}
+						<div class="Input--ErrorBlock">
+							<input id="login" 
+                                   type="email" 
+                                   name="login" 
+                                   value="{{login}}"
+                                   class="Input Input-Type-user" 
+                                   placeholder="Почта, логин или телефон" 
+                                   required="" tabindex="1">
+						</div>
+                        
+						<div class="Input--ErrorBlock">
+                            {{#errors.emptyPassw}}
+							<p class="Input--ErrorMsg" style="display:block;">Введи пароль</p>
+                            {{/errors.emptyPassw}}
+							<input id="password" 
+                                   type="password" 
+                                   name="password" 
+                                   value="{{passw}}"
+                                   class="Input Input-Type-password"
+                                   placeholder="Пароль" 
+                                   pattern="^.{6,50}$" 
+                                   required="" 
+                                   tabindex="2">
+						</div>
+					</div>
+
+					<div class="Form--HiddenBlock Input--ErrorBlock" data-type="captcha">
+						<div class="Input--CaptchaHolder">
+							<img class="Input--CaptchaImage" id="captcha-img" src="public/b/Form/d-t.gif" width="150" height="40">
+							<span class="Input--CaptchaRefresh"></span>
+						</div>
+						<p class="Input--ErrorMsg" data-error-type="enter-captcha">Введи число с картинки</p>
+						<p class="Input--ErrorMsg" data-error-type="invalid-captcha">Неправильный код с картинки</p>
+						<p class="Input--ErrorMsg" data-error-type="empty pattern">Неправильный код с картинки</p>
+						<input id="captcha-id" type="hidden" name="captcha-id-field" data-active-if="not-empty" value="" autocomplete="off">
+						<input id="captcha-value" type="tel" name="captcha-value" autocomplete="off" class="Input Input-Type-captcha" placeholder="Число с картинки" maxlength="6" data-active-if="#captcha-id" pattern="[0-9]{6}" required="" tabindex="3">
+					</div>
+
+					
+                    <button id="sign-in-phone" class="Button Button-Type-yellow Button-Margin-top">
+                        <span class="Button--Text">Войти</span>
+                    </button>
+
+					<span class="Button Button-Type-link Button-Margin-top">Забыл пароль</span>
+				</div>
+			</div>
+		</div>
+	</div>
+
+    <section class="Overlay">
+		<div class="Overlay--Content">
+			<div class="Alert">
+				<h2 class="Alert--Title">Ошибка</h2>
+				<p class="Alert--Message"></p>
+				<button class="Button Button-Type-yellow">Закрыть</button>
+				<div class="Alert--Debug"></div>
+				<div class="Alert--DebugTrigger"><span class="Alert--DebugTriggerArrow"></span></div>
+			</div>
+		</div>
+	</section>
+</section>
+
+<div id="fb-root"></div>
