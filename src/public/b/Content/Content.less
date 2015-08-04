@@ -1,0 +1,220 @@
+.Content {
+	position: absolute;
+	z-index: 2;
+	top: 0;
+	bottom: 0;
+	left: 0;
+	width: 100%;
+
+	display: block;
+	display: -moz-box;
+	display: -webkit-box;
+	display: -ms-flexbox;
+	display: flex;
+
+	-webkit-box-pack: center;
+	-webkit-box-orient: vertical;
+	flex-direction: column;
+	justify-content: center;
+
+	text-align: center;
+	font-size: 0px;
+	
+	background: #fee737;
+	background: -webkit-radial-gradient(center, ellipse cover, #fee737 20%,#ffc32a 99%); /* Chrome10+,Safari5.1+ */
+	background: radial-gradient(ellipse at center, #fee737 20%,#ffc32a 99%); /* W3C */
+
+	/* custom navbar */
+	.Desktop & {
+		top: 40px;
+		overflow: auto;
+	}
+
+	&--Inner {
+		display: inline-block;
+		vertical-align: middle;
+		padding: 20px;
+		max-width: 100%;
+		box-sizing: border-box;
+
+		.Desktop & {
+			overflow: auto;
+		}
+
+		@media (min-width: 640px) and (min-height: 480px) {
+			& {
+				padding: 46px 20px 96px 20px;
+			}
+		}
+	}
+
+	@media (max-width: 568px) {
+		&--Inner {
+			width: 100%;
+			box-sizing: border-box;
+			padding: 16px 0px 32px 0px;
+		}
+		.Desktop &--Inner {
+			padding-top: 46px;
+		}
+	}
+
+	&--Icon {
+		margin: 10px 0;
+		text-align: center;
+		&-Margin-bottom {
+			margin-bottom: 42px;
+	
+			@media (max-width: 568px) {
+				& {
+					margin-bottom: 24px;
+				}
+			}
+		}
+	}
+	@media (max-width: 568px) {
+		&--Icon4Game {
+			display: none;
+		}
+	}
+	@media (max-width: 470px) {
+		&--Icon4Game {
+			display: inline;
+			width: 49px;
+			height: 49px;
+		}
+	}
+
+	&--Title {
+		margin: 10px 0 50px 0;
+		font: 300 30px/36px 'Helvetica Neue', 'Roboto', sans-serif;
+		letter-spacing: 2px;
+		color: rgba(0, 0, 0, 0.7);
+		text-align: center;
+	
+		&-Spacing-normal {
+			letter-spacing: normal;
+		}
+		&-Bottom-small {
+			margin-bottom: 25px;
+		}
+		@media (max-width: 568px) {
+			& {
+				padding-left: 20px;
+				padding-right: 20px;
+				font-size: 20px;
+				line-height: 26px;
+			}
+		}
+
+		&-Page-success {
+			margin: 10px 0 20px 0;
+
+			@media (min-width: 470px) and (max-height: 480px) {
+				& {
+					font-size: 30px;
+					line-height: 36px;
+					text-align: left;
+					padding-left: 0;
+				}
+			}
+		}
+	
+	}
+	&--Scroll {
+		overflow: auto;
+		height: 100%;
+	}
+	&--Message {
+		margin: 10px 0 15px 0;
+		font: 300 17px/20px 'Helvetica Neue', 'Roboto', sans-serif;
+		color: rgba(0, 0, 0, 0.7);
+		text-align: center;
+	
+		&-Page-success {
+			margin: 20px 0 35px 0;
+			clear: both;
+		}
+		&-MobileNumber {
+			font-weight: 500;
+		}
+	}
+	&--Button {
+		display: inline-block;
+		width: 210px;
+		text-align: center;
+		white-space: nowrap;
+	}
+
+	/* success/prize page */
+	&-Page-success {
+		background: #ffce26 url('/b/Content/success-bg.jpg') no-repeat 50% 50%;
+		background-size: cover;
+
+		@media (min-width: 470px) and (max-height: 480px) {
+			& .Content--Inner {
+				padding: 20px;
+			}
+		}
+	}
+	&--SuccessPage {
+		margin: 0 20px;
+	}
+	&--Success {
+		width: 100%;
+		margin: 0 auto;
+
+		@media (min-width: 470px) and (max-height: 480px) {
+			& {
+				width: 320px;
+			}
+		}
+
+		@media (min-width: 640px) and (min-height: 480px) {
+			& {
+				width: 440px;
+			}
+		}
+	}
+	&--PrizeImage {
+		text-align: center;
+		@media (min-width: 470px) and (max-height: 480px) {
+			& {
+				float: left;
+				margin: 10px 0;
+				width: 40%;
+			}
+		}
+		@media (min-width: 640px) and (min-height: 480px) {
+			& {
+				margin-top: 50px;
+			}
+		}
+	}
+	&--SuccessNote {
+		margin-top: 30px;
+		font: 200 16px 'Helvetica Neue', 'Roboto', sans-serif;
+		text-align: center;
+
+		@media (min-width: 470px) {
+			& {
+				font-size: 20px;
+			}
+		}
+
+		@media (min-width: 640px) and (min-height: 480px) {
+			& {
+				margin-top: 100px;
+			}
+		}
+	}
+	&--Message-MobileNumber,
+	b[data-local-storage="phone"] {
+		display: inline-block;
+		max-width: 100%;
+		vertical-align: top;
+
+		overflow: hidden;
+		text-overflow: ellipsis;
+	}
+}

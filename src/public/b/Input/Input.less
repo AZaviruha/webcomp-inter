@@ -1,0 +1,124 @@
+.Input {
+	position: relative;
+	z-index: 4;
+	
+	width: 100%;
+	padding: 9px 0 7px 20px;
+	-moz-box-sizing: border-box;
+	box-sizing: border-box;
+
+	border: none;
+	border-bottom: 1px solid #cccccc;
+	border-radius: 0px;
+	
+	font: 300 17px/23px 'Helvetica Neue', 'Roboto', sans-serif;
+	color: black;
+	margin: 0 0 12px 0;
+
+	&:focus {
+		outline: none;
+	}
+	&:invalid,
+	&:required {
+		outline: none;
+		box-shadow: none;
+	}
+	&--CaptchaHolder {
+		position: relative;
+		padding: 12px 0;
+		margin: 0 0 6px 0;
+		text-align: center;
+		background: #f0f0f0;
+		cursor: pointer;
+	}
+	&--CaptchaRefresh {
+		position: absolute;
+		z-index: 3;
+		display: block;
+		width: 26px;
+		height: 26px;
+		right: 10px;
+		top: 19px;
+		background: url('/b/Form/captcha-arr.png') no-repeat;
+		background-size: 26px;
+	}
+	&--CaptchaRefresh-Spin {
+		-webkit-animation: spin 1s linear 0s infinite;
+		animation: spin 1s linear 0s infinite;
+	}
+
+	&-Error {
+		border-bottom-color: #ff0000;
+	}
+	&--ErrorMsg {
+		display: none;
+		position: relative;
+		margin: 0 0 -3px 0;
+		font: 300 11px 'Helvetica Neue', 'Roboto', sans-serif;
+		line-height: 11px;
+		color: #ff0000;
+		text-align: left;
+	}
+	&--ErrorLink {
+		color: #1c79e1;
+		text-decoration: none;
+	}
+	&--ErrorMsg-Visible {
+		display: block;
+	}
+
+
+	/* Input Icons */
+	&-Type-user {
+		background: data-uri('Input/icon-user.svg') no-repeat 0 52%;
+		background-size: 14px;
+	}
+	&-Type-user&-Error {
+		background: data-uri('Input/icon-user-error.svg') no-repeat 0 52%;
+		background-size: 14px;
+	}
+	&-Type-password {
+		background: data-uri('Input/icon-password.svg') no-repeat 0 52%;
+		background-size: 14px;
+	}
+	&-Type-password&-Error {
+		background: data-uri('Input/icon-password-error.svg') no-repeat 0 52%;
+		background-size: 14px;
+	}
+	&-Type-captcha {
+		background: data-uri('Input/icon-captcha.svg') no-repeat 0 54%;
+		background-size: 14px;
+	}
+	&-Type-captcha&-Error {
+		background: data-uri('Input/icon-captcha-error.svg') no-repeat 0 54%;
+		background-size: 14px;
+	}
+	&-Type-phone {
+		background: data-uri('Input/icon-phone.svg') no-repeat 0 52%;
+		background-size: 14px;
+	}
+	&-Type-phone&-Error {
+		background: data-uri('Input/icon-phone-error.svg') no-repeat 0 52%;
+		background-size: 14px;
+	}
+	&-Type-pinCode {
+		background: data-uri('Input/icon-pinCode.svg') no-repeat 0 52%;
+		background-size: 14px;
+	}
+	&-Type-pinCode&-Error {
+		background: data-uri('Input/icon-pinCode-error.svg') no-repeat 0 52%;
+		background-size: 14px;
+	}
+}
+@-moz-keyframes spin {
+    from { -moz-transform: rotate(0deg); }
+    to { -moz-transform: rotate(-360deg); }
+}
+@-webkit-keyframes spin {
+    from { -webkit-transform: rotate(0deg); }
+    to { -webkit-transform: rotate(-360deg); }
+}
+@keyframes spin {
+    from {transform:rotate(0deg);}
+    to {transform:rotate(-360deg);}
+}

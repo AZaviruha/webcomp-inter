@@ -2,13 +2,21 @@
 <html lang="ru">
     <head>
         <meta charset="UTF-8" />
-        <title>4game embdedded</title>
+        <meta name="apple-mobile-web-app-capable" content="yes">
+        <meta name="apple-mobile-web-app-status-bar-style" content="black">
+        <meta name="format-detection" content="telephone=no">
+        <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+        <meta name="apple-mobile-web-app-title" content="4game SDK">
+        <title>4game embdedded example</title>
+
+        <link rel="stylesheet" href="public/r/embedded4game.css">
+        <link rel="stylesheet" href="public/b/Input/input.css">
+        <script src="../dist/bundle.js"></script>
     </head>
 
     <body>
-        <script src="http://cdn.ractivejs.org/latest/ractive.min.js"></script>
-        <script src="../dist/bundle.js"></script>
-        
-        <div id="app"></div>
+
+        <div id="app" class="Screen">
+        </div>
     </body>
 </html>

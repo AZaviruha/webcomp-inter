@@ -1,0 +1,30 @@
+@import url("Screen/Screen.less");
+@import url("NavBar/NavBar.less");
+
+@import url("GameTeaser/GameTeaser.less");
+@import url("ButtonBar/ButtonBar.less");
+
+@import url("Content/Content.less");
+@import url("Form/Form.less");
+@import url("Input/Input.less");
+@import url("ButtonSet/ButtonSet.less");
+@import url("Button/Button.less");
+
+@import url("Overlay/Overlay.less");
+@import url("Alert/Alert.less");
+
+@import url("SocialService/SocialService.less");
+
+
+
+// App specific overrides
+// – remove VKontakte button for iOS to pass Apple approvement
+// html[appId="35"][platform="iOS"] {
+// 	.ButtonSet--HorizontalForm-Type-vkontakte,
+// 	.ButtonSet--Form-Type-vkontakte {
+// 		display: none;
+// 	}
+// 	.ButtonSet--HorizontalForm-Type-facebook {
+// 		width: 100%;
+// 	}
+// }

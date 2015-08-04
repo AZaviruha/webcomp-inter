@@ -1,0 +1,67 @@
+.Form {
+	width: 450px;
+	margin: 0 auto;
+
+	@media (max-width: 470px) {
+		& {
+			width: 100%;
+			overflow: hidden;
+		}
+	}
+
+	&-Align-center {
+		text-align: center;
+	}
+
+	&--Title {
+		font: 300 30px/36px 'Helvetica Neue', 'Roboto', sans-serif;
+		color: rgba(0, 0, 0, 0.7);
+		text-align: center;
+		padding: 0 16px;
+
+		@media (max-width: 568px) {
+			& {
+				font-size: 26px;
+			}
+		}
+		@media (max-width: 470px) {
+			& {
+				font-size: 24px;
+			}
+		}
+	}
+	&--TitleMobileNumber {
+		font-size: 26px;
+		font-weight: 400;
+	}
+	&--Message {
+		font: 16px/24px Arial, sans-serif;
+		text-align: center;
+		margin: 25px 0;
+	}
+	&--Fieldset {
+		background: white;
+		padding: 24px 32px;
+		border-radius: 16px;
+		box-shadow: 0 1px 0 rgba(146, 101, 29, 0.25);
+
+		&-Bottom-noPadding {
+			padding-bottom: 10px;
+		}
+		
+		@media (max-width: 470px) {
+			& {
+				background: white;
+				padding: 24px 16px;
+				border-radius: 0px;
+				box-shadow: 0 1px 0 rgba(146, 101, 29, 0.25);
+			}
+		}
+	}
+	&--HiddenBlock {
+		display: none;
+		&-Visible {
+			display: block;
+		}
+	}
+}

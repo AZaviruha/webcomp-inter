@@ -1,0 +1,134 @@
+.GameTeaser--Image-No-1 {
+	background-image: url('/c/26/mobile-screen-portrait1.jpg');
+}
+.GameTeaser--Image-No-2 {
+	background-image: url('/c/26/mobile-screen-portrait2.jpg');
+}
+.GameTeaser--Image-No-3 {
+	background-image: url('/c/26/mobile-screen-portrait3.jpg');
+}
+.GameTeaser--Image-No-4 {
+	background-image: url('/c/26/mobile-screen-portrait4.jpg');
+}
+.GameTeaser--Image-No-5 {
+	background-image: url('/c/26/mobile-screen-portrait5.jpg');
+}
+.GameTeaser--Image-No-6 {
+	background-image: url('/c/26/mobile-screen-portrait6.jpg');
+}
+
+@media (max-width: 640px), (max-height: 480px) {
+	/* Titles */
+	.GameTeaser--FrameTitle-No-1 {
+		display: none;
+	}
+	.GameTeaser--FrameTitle-No-2 {
+		text-shadow: 0 1px 15px #689e20, 0 1px 15px #689e20, 0 1px 8px #689e20, 0 1px 8px #689e20;
+	}
+	.GameTeaser--FrameTitle-No-3 {
+		text-shadow: 0 1px 15px #000, 0 0 8px #000;
+	}
+	.GameTeaser--FrameTitle-No-4 {
+		color: #fff;
+		text-shadow: 0 1px 15px #000, 0 0 15px #000, 0 0 15px #000, 0 0 8px #000, 0 0 8px #000, 0 0 8px #000;
+	}
+	.GameTeaser--FrameTitle-No-5 {
+		color: #3860cf;
+		text-shadow: 0 1px 15px #fff, 0 0 15px #fff, 0 0 15px #fff, 0 0 8px #fff, 0 0 8px #fff, 0 0 8px #fff;
+	}
+	.GameTeaser--FrameTitle-No-6 {
+		color: #000;
+	}
+	.GameTeaser--FramePointers-Active-4 .GameTeaser--FramePointer {
+		border-color: #3860cf;
+		background-color: #3860cf;
+	}
+	.GameTeaser--FramePointers-Active-5 .GameTeaser--FramePointer {
+		border-color: #000;
+		background-color: #000;
+	}
+	.GameTeaser--FramePointers-Active-4 .GameTeaser--FramePointer-State-current,
+	.GameTeaser--FramePointers-Active-5 .GameTeaser--FramePointer-State-current {
+		background-color: transparent;
+	}
+}
+
+/* smartphones landscape */
+@media (min-width: 470px) and (max-height: 480px) {
+	.GameTeaser--Image-No-1 {
+		background-image: url('/c/26/mobile-screen1.jpg');
+	}
+	.GameTeaser--Image-No-2 {
+		background-image: url('/c/26/mobile-screen2.jpg');
+	}
+	.GameTeaser--Image-No-3 {
+		background-image: url('/c/26/mobile-screen3.jpg');
+	}
+	.GameTeaser--Image-No-4 {
+		background-image: url('/c/26/mobile-screen4.jpg');
+	}
+	.GameTeaser--Image-No-5 {
+		background-image: url('/c/26/mobile-screen5.jpg');
+	}
+	.GameTeaser--Image-No-6 {
+		background-image: url('/c/26/mobile-screen6.jpg');
+		background-position: left center;
+	}
+}
+
+/* tablets and desktops */
+@media (min-width: 640px) and (min-height: 480px) {
+	.GameTeaser {
+		background-image: url('/c/26/bg-dark.jpg');
+		background-position: center bottom;
+	}
+	.GameTeaser--Image-No-1 {
+		background-image: url('/c/26/screen1.jpg');
+	}
+	.GameTeaser--Image-No-2 {
+		background-image: url('/c/26/screen2.jpg');
+	}
+	.GameTeaser--Image-No-3 {
+		background-image: url('/c/26/screen3.jpg');
+	}
+	.GameTeaser--Image-No-4 {
+		background-image: url('/c/26/screen4.jpg');
+	}
+	.GameTeaser--Image-No-5 {
+		background-image: url('/c/26/screen5.jpg');
+	}
+	.GameTeaser--Image-No-6 {
+		background-image: url('/c/26/screen6.jpg');
+	}
+}
+
+/* Success page screen */
+.Content--Title {
+	letter-spacing: 0;
+}
+.Content--PrizeImage img {
+	width: 96px;
+	height: 96px;
+}
+.Content--SuccessNote:after {
+	display: inline-block;
+	content: ' ';
+	width: 44px;
+	height: 46px;
+	margin-left: 8px;
+	vertical-align: middle;
+	background-image: url('/c/26/successnote-mobile.png');
+	background-size: 44px 46px;
+}
+
+/* tablets and desktops */
+@media (min-width: 640px) and (min-height: 480px) {
+	.Content--SuccessNote:after {
+		display: block;
+		width: 235px;
+		height: 98px;
+		margin: 20px auto 0;
+		background-size: 235px 98px;
+		background-image: url('/c/26/successnote-desktop.png');
+	}
+}

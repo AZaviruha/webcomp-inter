@@ -1,6 +1,6 @@
 require('babel/polyfill');
 const Bacon   = require('baconjs');
-import {FSM} from './modules/fsm';
+import {FSM} from './fsm';
 
 // console.log( 'FSM :: ', FSM );
 

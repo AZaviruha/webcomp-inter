@@ -1,0 +1,216 @@
+.Button {
+	display: inline-block;
+	width: 100%;
+	box-sizing: border-box;
+	padding: 12px 0;
+
+	font: 300 21px/25px 'Helvetica Neue', 'Roboto', sans-serif;
+	color: rgba(0, 0, 0, 0.6);
+	text-align: center;
+	text-decoration: none;
+
+	border: none;
+	border-radius: 8px;
+	
+	cursor: pointer;
+
+	/* smartphones */
+	@media (max-width: 568px) {
+		& {
+			font-size: 17px;
+		}
+	}
+
+	/* remove default border when button is active */
+	&:focus {
+		outline: none;
+	}
+	
+	&-Width {
+		&-normal {
+			width: auto;
+			padding-left: 50px;
+			padding-right: 50px;
+
+			/* tablets in portrait mode */
+			@media (max-width: 900px) {
+				/* short Play button on home */
+				& {
+					width: 100%;
+					padding-left: 0;
+					padding-right: 0;
+				}
+			}
+		}
+		&-flex {
+			@media (max-width: 720px) {
+				& {
+					width: auto;
+					padding-left: 20px;
+					padding-right: 20px;
+				}
+				&.Button-Icon-4game {
+					padding-left: 62px;
+				}	
+			}
+			@media (max-width: 470px) {
+				& {
+					width: 100%;
+					padding-left: 0;
+					padding-right: 0;
+				}
+				&.Button-Icon-4game {
+					padding-left: 0;
+				}
+			}
+		}
+	}
+	&-Type {
+		&-yellow {
+			background: #ffcf2e;
+			box-shadow: 0 -1px 0 #d3a91a inset;
+		}
+		&-white {
+			background: white;
+			box-shadow: 0 1px 0 rgba(146, 101, 29, 0.25);
+		}
+		&-whiteBorder {
+			background: white;
+			box-shadow: 0 0 0 1px rgba(0, 0, 0, 0.3) inset;
+		}
+		&-transparent {
+			background: transparent;
+			box-shadow: 0 0 0 1px rgba(0, 0, 0, 0.3) inset;
+		}
+		&-vkontakte {
+			color: white;
+			background: #4e739c;
+			box-shadow: 0 1px 0 #3d5773;
+		}
+		&-facebook {
+			color: white;
+			background: #3d599b;
+			box-shadow: 0 1px 0 #2e3f68;
+		}
+		&-link {
+			display: inline-block;
+			padding-top: 14px;
+			padding-bottom: 14px;
+			font-size: 17px;
+			line-height: 21px;
+			text-decoration: none;
+			color: #1c79e1;
+			background: transparent;
+		}
+	}
+	
+	&-State-spinner {
+		position: relative;
+	
+		&:after {
+			display: block;
+			position: absolute;
+			z-index: 2;
+			top: 50%;
+			left: 50%;
+			width: 48px;
+			height: 48px;
+			content: ' ';
+		
+			-webkit-transform: translate(-24px, -24px);
+			transform: translate(-24px, -24px);
+		
+			background-image: url('/b/Button/spinner.png');
+			background-repeat: no-repeat;
+			background-size: 48px 48px;
+			background-position: center center;
+		
+			-webkit-animation: rotate-button-spinner 1s linear infinite;
+			animation: rotate-button-spinner 1s linear infinite;
+		}
+	
+		.Button--Text {
+			visibility: hidden;
+		}
+	}
+	@keyframes rotate-button-spinner {
+		from {
+			transform: translate(-24px, -24px) rotate(0deg);
+		}
+		to {
+			transform: translate(-24px, -24px) rotate(360deg);
+		}
+	}
+	@-webkit-keyframes rotate-button-spinner {
+		from {
+			-webkit-transform: translate(-24px, -24px) rotate(0deg);
+		}
+		to {
+			-webkit-transform: translate(-24px, -24px) rotate(360deg);
+		}
+	}
+	
+	
+	.Button-Size-auto {
+		display: block;
+		width: auto;
+		padding-left: 35px;
+		padding-right: 35px;
+		margin: 0 auto;
+	}
+	
+	
+	&-Icon {
+		&-4game {
+			background: url('/b/Button/4game-icon.svg') no-repeat, white;
+			background-size: contain;
+		}
+		&-vkontakte {
+			padding-left: 20px;
+			background: url('/b/Button/vkontakte-icon.svg') no-repeat, #4e739c;
+			background-size: contain;
+		}
+		&-facebook {
+			padding-left: 20px;
+			background: url('/b/Button/facebook-icon.svg') no-repeat, #3d599b;
+			background-size: contain;
+		}
+	}
+	&-Margin {
+		&-top {
+			margin-top: 14px;
+		}
+		&-both {
+			margin-top: 14px;
+			margin-bottom: 14px;
+		}
+	}
+}
+
+/* iPad portrait */
+@media (min-width: 470px) and (max-width: 900px) {
+	.Button[data-short-text] .Button--Text {
+		display: none;
+	}
+	.Button[data-short-text]:after {
+		content: attr(data-short-text);
+	}
+}
+
+/* iPhone */
+@media (min-device-width : 320px) and (max-device-width: 480px) and (orientation: landscape) and (device-aspect-ratio: 2/3) {
+	.Button[data-shortest-text] .Button--Text {
+		display: none;
+	}
+	.Button[data-shortest-text]:after {
+		content: attr(data-shortest-text);
+	}
+}
+@media (min-device-width : 320px) and (max-device-width: 568px) and (orientation: landscape) {
+	.Button[data-short-text] .Button--Text {
+		display: none;
+	}
+	.Button[data-short-text]:after {
+		content: attr(data-short-text);
+	}
+}

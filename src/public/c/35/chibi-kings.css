@@ -1,0 +1,30 @@
+.GameTeaser--Image-No-1 {
+	background-image: url('/c/35/mobile-screen-portrait1.jpg');
+}
+
+/* smartphones landscape */
+@media (min-width: 470px) and (max-height: 480px) {
+	.GameTeaser--Image-No-1 {
+		background-image: url('/c/35/mobile-screen1.jpg');
+		background-position: center top;
+	}
+}
+
+/* tablets and desktops */
+@media (min-width: 640px) and (min-height: 480px) {
+	.GameTeaser--TitleHolder {
+		display: none;
+	}
+	.GameTeaser--Image-No-1 {
+		width: 100vw;
+		height: 100vh;
+		margin: 0px;
+		border-radius: 0px;
+		background-image: url('/c/35/screen1.jpg');
+		background-size: cover;
+		box-shadow: none;
+	}
+	.GameTeaser--Image-No-1:after {
+		display: none;
+	}
+}

@@ -1,0 +1,41 @@
+.ButtonSet {
+	width: 320px;
+	margin: 0 auto;
+
+	&--Logo {
+		margin: 32px 0 42px 0;
+		text-align: center;
+	}
+	&--Form {
+		margin: 0 0 16px 0;
+	}
+	&--Horizontal {
+		text-align: justify;
+		font-size: 1px;
+
+		&:after {
+			display: inline-block;
+			content: ' ';
+			width: 90%;
+			height: 1px;
+		}
+	}
+	&--HorizontalForm {
+		display: inline-block;
+		width: 210px;
+		margin: 0 0 20px 0;
+	}
+
+	@media (max-width: 470px) {
+		& {
+			width: 288px;
+			overflow: hidden;
+		}
+		&--Horizontal {
+			margin: 0 16px;
+		}
+		&--HorizontalForm {
+			width: 100%;
+		}
+	}
+}

@@ -1,0 +1,109 @@
+.Alert {
+	position: relative;
+
+	width: 390px;
+	padding: 25px 30px 30px 30px;
+	margin: auto;
+	
+	color: rgba(0, 0, 0, 0.7);
+	text-align: center;
+	
+	background-color: white;
+	border-radius: 18px;
+	box-shadow: 0 1px 0 0 rgba(0, 0, 0, 0.2);
+
+	&--Title {
+		margin: 0 0 8px 0;
+	
+		font: 300 30px/36px 'Helvetica Neue', 'Roboto', sans-serif;
+		text-align: center;
+	}
+	&--Message {
+		margin: 8px 0 16px 0;
+	
+		font: 300 17px/20px 'Helvetica Neue', 'Roboto', sans-serif;
+		text-align: center;
+	}
+	&--Debug {
+		display: none;
+	
+		margin-top: 15px;
+		padding: 10px;
+		
+		overflow: auto;
+		white-space: nowrap;
+		
+		font: 14px/18px monospace;
+		color: #3c3;
+		text-align: left;
+	
+		background: #555;
+		border-radius: 5px;
+	
+		&-State-visible {
+			display: block;
+		}
+	}
+	&--DebugTrigger {
+		display: none;
+		
+		position: absolute;
+		bottom: 0;
+		left: 130px;
+	
+		width: 200px;
+		height: 25px;
+	
+		cursor: pointer;
+	
+		&-State-visible {
+			display: block;
+		}
+	}
+	&--DebugTriggerArrow {
+		display: block;
+		position: absolute;
+		bottom: 4px;
+		left: 95px;
+		
+		width: 0;
+		height: 0;
+		
+		border-top: 10px solid #ddd;
+		border-left: 5px solid transparent;
+		border-right: 5px solid transparent;
+	}
+	&--DebugTriggerArrow-Position-close {
+		bottom: 8px;
+		border-top: none;
+		border-bottom: 10px solid #ddd;
+	}
+	
+	/* iPhone */
+	@media (max-width: 568px) {
+		& {
+			width: 260px;
+		}
+		&--Title {
+			font-size: 24px;
+			line-height: 30px;
+		}
+		&--Message {
+			font-size: 14px;
+		}
+		&--DebugTrigger {
+			left: 65px;
+		}
+	}
+	
+	/* Portrait mode */
+	@media (max-width: 470px) {
+		.Alert {
+			width: 240px;
+		}
+		.Alert--DebugTrigger {
+			left: 55px;
+		}
+	}
+
+}

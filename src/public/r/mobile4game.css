@@ -1,0 +1,795 @@
+body {
+	margin: 0;
+	background: #dedede;
+	-moz-osx-font-smoothing: grayscale;
+	-webkit-font-smoothing: subpixel-antialiased;
+}
+
+.Screen {
+	position: absolute;
+	width: 100%;
+	height: 100%;
+}
+
+.NavBar {
+	display: none;
+
+	position: absolute;
+	top: 0;
+	left: 0;
+	right: 0;
+	z-index: 3;
+	height: 40px;
+
+	text-align: center;
+
+	background: white;
+	box-shadow: 0 1px 0 0 rgba(146, 101, 29, 0.25);
+}
+.Desktop .NavBar {
+	display: block;
+}
+
+.NavBar--Title {
+	position: absolute;
+	z-index: 2;
+	top: 0;
+	left: 0;
+	right: 0;
+	display: inline-block;
+	padding: 10px 0;
+	margin: 0;
+	font: 17px/20px 'Helvetica Neue', 'Roboto', sans-serif;
+}
+.NavBar--LeftButton, 
+.NavBar--RightButton {
+	position: relative;
+	z-index: 3;
+	
+	width: 150px;
+	
+	padding: 10px 27px;
+
+	font: 300 17px/20px 'Helvetica Neue', 'Roboto', sans-serif;
+	color: #1c79e1;
+	text-decoration: none;
+}
+.NavBar--LeftButton {
+	float: left;
+	text-align: left;
+}
+.NavBar--RightButton {
+	float: right;
+	text-align: right;
+}
+.NavBar--LeftButton:before {
+	position: absolute;
+	top: 12px;
+	left: 12px;
+	display: block;
+	content: ' ';
+	width: 12px;
+	height: 12px;
+	border-top: 3px solid #1c79e1;
+	border-left: 3px solid #1c79e1;
+	-webkit-transform: rotate(-45deg);
+	-moz-transform: rotate(-45deg);
+	transform: rotate(-45deg);
+}
+
+
+.GameTeaser {
+	position: absolute;
+	top: 0;
+	left: 0;
+	right: 0;
+	bottom: 128px;
+	background: url('/b/Content/success-bg.jpg') no-repeat 50% 50%;
+	background-size: cover;
+}
+.GameTeaser-Toolbar-visible {
+	top: 40px;
+}
+@media (max-width: 568px) {
+	.GameTeaser {
+		bottom: 0;
+		padding-bottom: 80px;
+	}
+	.GameTeaser-Theme-dark {
+		background: #000 !important;
+	}
+}
+
+.GameTeaser--AppId {
+	position: absolute;
+	left: 50%;
+	top: 50%;
+	-webkit-transform: translate(-50%, -50%);
+	        transform: translate(-50%, -50%);
+
+	font: 900 100px/86px 'Helvetica Neue','Roboto',sans-serif;
+	color: rgba(0, 0, 0, 0.7);
+	text-shadow: 2px 2px rgba(0, 0, 0, 0.2);
+}
+
+.GameTeaserGallery {
+	display: table;
+	table-layout: fixed;
+	width: 100%;
+	height: 100%;
+	margin: 0 auto;
+}
+.GameTeaserGallery--Grid {
+	display: table-cell;
+	width: 100%;
+	vertical-align: middle;
+	text-align: center;
+	white-space: nowrap;
+	overflow: hidden;
+}
+.GameTeaserGallery--Frame {
+	display: inline-block;
+	width: 100%;
+}
+.GameTeaserGallery--FrameTitleCenterer {
+	display: none;
+}
+.GameTeaserGallery--FrameTitle {
+	margin: 0;
+	font: 300 22px/26px 'Helvetica Neue', 'Roboto', sans-serif;
+	color: black;
+}
+.GameTeaserGallery--FrameTitle-Theme-dark {
+	color: white;
+}
+.GameTeaserGallery--FrameDescription {
+	margin: 8px 0 16px 0;
+	font: 300 12px/16px 'Helvetica Neue', 'Roboto', sans-serif;
+	color: black;
+}
+.GameTeaserGallery--FrameDescription-Theme-dark {
+	color: white;
+}
+.GameTeaserGallery--FramePointers {
+    position: absolute;
+    padding-bottom: 14px;
+    bottom: 0;
+    left: 0;
+    right: 0;
+}
+.GameTeaserGallery--FramePointer {
+	display: inline-block;
+	width: 8px;
+	height: 8px;
+	margin: 0 5px;
+	border: 1px solid white;
+	border-radius: 8px;
+	background-color: #fff;
+}
+.GameTeaserGallery--FramePointer-State-current {
+	background-color: transparent;
+}
+.GameTeaserGallery--ImageContainer {
+	display: inline-block;
+	position: relative;
+	border-radius: 8px;
+}
+.GameTeaserGallery--Image {
+	vertical-align: bottom;
+	border-radius: 8px;
+	box-shadow: 5px 10px 20px rgba(0, 0, 0, 0.5);
+}
+.GameTeaserGallery--ImageContainer::after {
+	border-radius: 8px;
+	display: block;
+	content: ' ';
+	position: absolute;
+	top: 0;
+	left: 0;
+	bottom: 0;
+	right: 0;
+	box-shadow: inset 0 1px 0 rgba(255,255,255,.3),
+				inset -1px 0 0 rgba(0,0,0,.25), inset -2px 0 0 rgba(255,255,255,.05),
+				inset 0 -1px 0 rgba(0,0,0,.25), inset 0 -2px 0 rgba(255,255,255,.05),
+				0 1px 0 rgba(0,0,0,.1);
+}
+.GameTeaserGallery--ImageMobile {
+	display: none;
+}
+@media (max-width: 568px) {
+	.GameTeaserGallery--Grid,
+	.GameTeaserGallery--Frames,
+	.GameTeaserGallery--Frame {
+		height: 100%;
+	}
+	.GameTeaserGallery--Frames {
+		font-size: 0px;
+	}
+	.GameTeaserGallery--Frame {
+		position: relative;
+		vertical-align: top;
+		text-align: left;
+		overflow: hidden;
+	}
+	.GameTeaserGallery--FrameTitleCenterer {
+		display: inline-block;
+		vertical-align: middle;
+		height: 100%;
+		min-height: 190px;
+	}
+	.GameTeaserGallery--FrameTitle {
+		position: relative;
+		z-index: 4;
+		display: inline-block;
+		vertical-align: middle;
+		margin: 0 10% 20px 50%;
+		text-align: left;
+		font-size: 27px;
+		line-height: 32px;
+		white-space: normal;
+	}
+	.GameTeaserGallery--FrameDescription {
+		display: none;
+	}
+	.GameTeaserGallery--Image {
+		display: none;
+	}
+	.GameTeaserGallery--ImageMobile {
+		position: absolute;
+		top: 0;
+		left: 0;
+		z-index: 2;
+		display: block;
+	}
+	.GameTeaserGallery--FramePointers {
+		bottom: 80px;
+		padding-bottom: 10px;
+	}
+}
+
+	@media (max-width: 470px) {
+		.GameTeaser {
+			padding-bottom: 0;
+		}
+		.GameTeaserGallery--FramePointers {
+			bottom: 0px;
+			padding-bottom: 5px;
+		}
+		.GameTeaserGallery--FrameTitle {
+			position: absolute;
+			bottom: 220px;
+			width: auto;
+			margin: 20px;
+			vertical-align: top;
+			font-size: 20px;
+			line-height: 24px;
+		}
+	}
+
+.ButtonBar {
+	position: absolute;
+	z-index: 3;
+	left: 0;
+	right: 0;
+	bottom: 0;
+	height: 128px;
+	width: 100%;
+
+	display: table;
+	
+	background: white;
+}
+.ButtonBar--Content {
+	display: table-cell;
+	vertical-align: middle;
+
+	padding: 0 35px;
+}
+.ButtonBar--Form {
+	display: inline-block;
+	margin: 0;
+	width: 220px;
+}
+.ButtonBar--Form-Pos-left {
+	float: left;
+	margin-right: 15px;
+}
+.ButtonBar--Form-Pos-right {
+	float: right;
+}
+.ButtonBar--Form-Width-auto {
+	width: auto;
+}
+
+
+.Content {
+	position: absolute;
+	z-index: 2;
+	top: 0;
+	bottom: 0;
+	left: 0;
+	width: 100%;
+
+	display: block;
+	display: -moz-box;
+	display: -webkit-box;
+	display: -ms-flexbox;
+	display: flex;
+
+	-webkit-box-pack: center;
+	-webkit-box-orient: vertical;
+	flex-direction: column;
+	justify-content: center;
+
+	text-align: center;
+	font-size: 0px;
+	
+	overflow: auto;
+
+	background: #fee737;
+	background: -webkit-radial-gradient(center, ellipse cover, #fee737 20%,#ffc32a 99%); /* Chrome10+,Safari5.1+ */
+	background: radial-gradient(ellipse at center, #fee737 20%,#ffc32a 99%); /* W3C */
+}
+.Desktop .Content {
+	top: 40px;
+}
+.Content-Page-success {
+	background: #ffce26 url('/b/Content/success-bg.jpg') no-repeat 50% 50%;
+	background-size: cover;
+}
+
+
+.Content--Icon {
+	margin: 10px 0;
+	text-align: center;
+}
+.Content--Icon-Margin-bottom {
+	margin-bottom: 42px;
+}
+.Content--Title {
+	margin: 10px 0 50px 0;
+	font: 300 30px/36px 'Helvetica Neue', 'Roboto', sans-serif;
+	letter-spacing: 2px;
+	color: rgba(0, 0, 0, 0.7);
+	text-align: center;
+}
+@media (max-width: 568px) {
+	.Content--Title {
+		font-size: 20px;
+		line-height: 26px;
+		padding-left: 20px;
+		padding-right: 20px;
+	}
+}
+.Content--Inner {
+	display: inline-block;
+	vertical-align: middle;
+	padding: 46px 20px 96px 20px;
+	overflow: auto;
+}
+.Content--Scroll {
+	overflow: auto;
+	height: 100%;
+}
+
+
+
+.Content--Title-Spacing-normal {
+	letter-spacing: normal;
+}
+.Content--Title-Bottom-small {
+	margin-bottom: 25px;
+}
+.Content--Title-Page-success {
+	margin: 10px 0 20px 0;
+}
+.Content--Message {
+	margin: 10px 0 15px 0;
+	font: 300 17px/20px 'Helvetica Neue', 'Roboto', sans-serif;
+	color: rgba(0, 0, 0, 0.7);
+	text-align: center;
+}
+.Content--Message-Page-success {
+	margin: 20px 0 35px 0;
+}
+.Content--Message-MobileNumber {
+	font-weight: 500;
+}
+.Content--Button {
+	display: inline-block;
+	width: 210px;
+	text-align: center;
+	white-space: nowrap;
+}
+.Content--Success {
+	width: 440px;
+	margin: 0 auto;
+}
+.Content--PrizeImage {
+	margin-top: 50px;
+	text-align: center;
+}
+
+@media (max-width: 568px) {
+	.Content--Success {
+		width: 360px;
+	}
+}
+
+@media (max-width: 470px) {
+	.Content--Success {
+		width: 280px;
+	}
+}
+
+
+.Form {
+	width: 450px;
+	margin: 0 auto;
+}
+.Form-Align-center {
+	text-align: center;
+}
+.Form--Title {
+	font: 300 30px/36px 'Helvetica Neue', 'Roboto', sans-serif;
+	color: rgba(0, 0, 0, 0.7);
+	text-align: center;
+	padding: 0 16px;
+}
+.Form--TitleMobileNumber {
+	font-size: 26px;
+	font-weight: 400;
+}
+.Form--Message {
+	font: 16px/24px Arial, sans-serif;
+	text-align: center;
+	margin: 25px 0;
+}
+.Form--Fieldset {
+	background: white;
+	padding: 24px 32px;
+	border-radius: 16px;
+	box-shadow: 0 1px 0 rgba(146, 101, 29, 0.25);
+}
+.Form--Fieldset-Bottom-noPadding {
+	padding-bottom: 10px;
+}
+.Form--HiddenBlock {
+	display: none;
+}
+.Form--HiddenBlock-Visible {
+	display: block;
+}
+
+
+
+.ButtonSet {
+	width: 320px;
+	margin: 0 auto;
+}
+.ButtonSet--Logo {
+	margin: 32px 0 42px 0;
+	text-align: center;
+}
+.ButtonSet--Form {
+	margin: 0 0 16px 0;
+}
+.ButtonSet--Horizontal {
+	text-align: justify;
+	font-size: 1px;
+}
+.ButtonSet--Horizontal:after {
+	display: inline-block;
+	content: ' ';
+	width: 90%;
+	height: 1px;
+}
+.ButtonSet--HorizontalForm {
+	display: inline-block;
+	width: 210px;
+	margin: 0 0 20px 0;
+}
+
+.Button {
+	display: inline-block;
+	width: 100%;
+	box-sizing: border-box;
+	padding: 0;
+
+	font: 300 21px/49px 'Helvetica Neue', 'Roboto', sans-serif;
+	color: rgba(0, 0, 0, 0.6);
+	text-align: center;
+	text-decoration: none;
+
+	border: none;
+	border-radius: 8px;
+	
+	cursor: pointer;
+}
+.Button:focus {
+	outline: none;
+}
+
+.Button--Title-Normal {
+	display: inline;
+}
+.Button--Title-Short {
+	display: none;
+}
+
+.Button-Width-normal {
+	width: auto;
+	padding-left: 50px;
+	padding-right: 50px;
+}
+.Button-Type-yellow {
+	background: #ffcf2e;
+	box-shadow: 0 -1px 0 #d3a91a inset;
+}
+
+.Button-Type-white {
+	background: white;
+	box-shadow: 0 1px 0 rgba(146, 101, 29, 0.25);
+}
+
+.Button-Type-whiteBorder {
+	background: white;
+	box-shadow: 0 0 0 1px rgba(0, 0, 0, 0.3) inset;
+}
+.Button-Type-transparent {
+	background: transparent;
+	box-shadow: 0 0 0 1px rgba(0, 0, 0, 0.3) inset;
+}
+
+.Button-Type-vkontakte {
+	color: white;
+	background: #4e739c;
+	box-shadow: 0 1px 0 #3d5773;
+}
+
+.Button-Type-facebook {
+	color: white;
+	background: #3d599b;
+	box-shadow: 0 1px 0 #2e3f68;
+}
+.Button-State-spinner {
+	position: relative;
+}
+.Button-State-spinner::after {
+	display: block;
+	position: absolute;
+	z-index: 2;
+	top: 50%;
+	left: 50%;
+	width: 48px;
+	height: 48px;
+	content: ' ';
+
+	-webkit-transform: translate(-24px, -24px);
+	transform: translate(-24px, -24px);
+
+	background-image: url('/b/Button/spinner.png');
+	background-repeat: no-repeat;
+	background-size: 48px 48px;
+	background-position: center center;
+
+	-webkit-animation: rotate-button-spinner 1s linear infinite;
+	animation: rotate-button-spinner 1s linear infinite;
+}
+@keyframes rotate-button-spinner {
+	from {
+		transform: translate(-24px, -24px) rotate(0deg);
+	}
+	to {
+		transform: translate(-24px, -24px) rotate(360deg);
+	}
+}
+@-webkit-keyframes rotate-button-spinner {
+	from {
+		-webkit-transform: translate(-24px, -24px) rotate(0deg);
+	}
+	to {
+		-webkit-transform: translate(-24px, -24px) rotate(360deg);
+	}
+}
+.Button-State-spinner .Button--Text {
+	visibility: hidden;
+}
+
+
+.Button-Type-link {
+	display: inline-block;
+	padding-top: 14px;
+	padding-bottom: 14px;
+	font-size: 17px;
+	line-height: 21px;
+	text-decoration: none;
+	color: #1c79e1;
+	background: transparent;
+}
+
+.Button-Size-auto {
+	display: block;
+	width: auto;
+	padding-left: 35px;
+	padding-right: 35px;
+	margin: 0 auto;
+}
+
+
+.Button-Icon-4game {
+	background: url('/b/Button/4game-icon.svg') no-repeat, white;
+	background-size: contain;
+}
+.Button-Icon-vkontakte {
+	padding-left: 20px;
+	background: url('/b/Button/vkontakte-icon.svg') no-repeat, #4e739c;
+	background-size: contain;
+}
+.Button-Icon-facebook {
+	padding-left: 20px;
+	background: url('/b/Button/facebook-icon.svg') no-repeat, #3d599b;
+	background-size: contain;
+}
+.Button-Margin-top {
+	margin-top: 14px;
+}
+.Button-Margin-both {
+	margin-top: 14px;
+	margin-bottom: 14px;
+}
+
+/* iPad portrait */
+@media (max-width: 900px) {
+	/* short Play button on home */
+	.ButtonBar--Form-Width-auto {
+		width: 220px;
+	}
+	.Button-Width-normal {
+		width: 100%;
+		padding: 0;
+	}
+	.Button[data-short-text] .Button--Text {
+		display: none;
+	}
+	.Button[data-short-text]:after {
+		content: attr(data-short-text);
+	}
+}
+
+@media (max-width: 770px) {
+	.ButtonBar--Form {
+		width: auto;
+	}
+	.Button-Width-flex {
+		width: auto;
+		padding-left: 20px;
+		padding-right: 20px;
+	}
+	.Button-Width-flex.Button-Icon-4game {
+		padding-left: 62px;
+	}	
+}
+
+/* iPhone */
+@media (max-width: 568px) {
+
+	.Content--Inner {
+		width: 100%;
+		box-sizing: border-box;
+		padding: 16px 0px 32px 0px;
+	}
+	.Desktop .Content--Inner {
+		padding-top: 46px;
+	}
+
+	.Content--Icon-Margin-bottom {
+		margin-bottom: 24px;
+	}
+	.Content--Icon4Game {
+		display: none;
+	}
+	
+	.ButtonBar {
+		height: 80px;
+	}
+	.ButtonBar--Content {
+		padding: 0 16px;
+	}
+	
+	.Button {
+		font-size: 17px;
+	}
+	
+	.Form--Title {
+		font-size: 26px;
+	}
+}
+	@media (min-device-width : 320px) and (max-device-width: 480px) and (orientation: landscape) and (device-aspect-ratio: 2/3) {
+		.Button[data-shortest-text] .Button--Text {
+			display: none;
+		}
+		.Button[data-shortest-text]:after {
+			content: attr(data-shortest-text);
+		}
+	}
+	@media (min-device-width : 320px) and (max-device-width: 568px) and (orientation: landscape) {
+		.Button[data-short-text] .Button--Text {
+			display: none;
+		}
+		.Button[data-short-text]:after {
+			content: attr(data-short-text);
+		}
+	}
+
+	/* Portrait mode */
+	@media (max-width: 470px) {
+
+		.Content--Icon4Game {
+			display: inline;
+			width: 49px;
+			height: 49px;
+		}
+
+		.ButtonBar {
+			margin: 0;
+			padding-top: 8px;
+			padding-bottom: 4px;
+		}
+		.ButtonBar--Form,
+		.ButtonBar--Form-Width-auto {
+			width: 100%;
+			margin: 0 0 8px 0;
+		}
+	
+		.Form {
+			width: 100%;
+			overflow: hidden;
+		}
+		.Form--Fieldset {
+			background: white;
+			padding: 24px 16px;
+			border-radius: 0px;
+			box-shadow: 0 1px 0 rgba(146, 101, 29, 0.25);
+		}
+
+		.ButtonSet {
+			width: 288px;
+			overflow: hidden;
+		}
+		.ButtonSet--Horizontal {
+			margin: 0 16px;
+		}
+		.ButtonSet--HorizontalForm {
+			width: 100%;
+		}
+		.Form--Title {
+			font-size: 24px;
+		}
+		.Button-Width-flex {
+			width: 100%;
+			padding-left: 0;
+			padding-right: 0;
+		}
+		.Button-Width-flex.Button-Icon-4game {
+			padding-left: 0;
+		}
+	}
+
+.SocialService--Login {
+	margin: 0 auto 15px auto;
+	max-width: 318px;
+	overflow: hidden;
+
+	font: 500 17px/28px 'Helvetica Neue', Arial, sans-serif;
+	text-align: center;
+
+	white-space: nowrap;
+	text-overflow: ellipsis;
+}
+
+.SocialService--Avatar {
+	margin-right: 4px;
+	vertical-align: middle;
+	border-radius: 14px;
+}

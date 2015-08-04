@@ -1,0 +1,88 @@
+.ButtonBar {
+	height: auto;
+	min-height: 128px;
+	box-sizing: border-box;
+	padding: 0 16px;
+
+	display: -webkit-box;
+	display: flex;
+	-webkit-box-orient: horizontal;
+	flex-direction: row;
+	
+	-webkit-box-pack: justify;
+	justify-content: space-between;
+	-webkit-box-align: center;
+	align-items: center;
+
+	background: white;
+
+	&--Group {
+		display: -webkit-box;
+		display: flex;
+
+		@media (max-width: 470px) {
+			& {
+				display: block;
+				min-width: 100%;
+			}
+		}
+	}
+
+	&--Form {
+		position: relative;
+		display: inline-block;
+		margin: 0;
+		width: 220px;
+
+		&-Pos-left {
+			float: left;
+			margin-right: 15px;
+		}
+		&-Pos-right {
+			float: right;
+		}
+		&-Width-auto {
+			width: auto;
+		}
+	}
+}
+
+/* iPad portrait */
+@media (max-width: 900px) {
+	/* short Play button on home */
+	.ButtonBar--Form-Width-auto {
+		width: 220px;
+	}
+}
+
+@media (max-width: 720px) {
+	.ButtonBar--Form {
+		width: auto;
+	}
+}
+
+/* iPhone */
+@media (min-width: 470px) and (max-height: 480px) {
+	.ButtonBar {
+		min-height: 80px;
+	}
+	.ButtonBar--Content {
+		padding: 0 16px;
+	}	
+}
+
+@media (max-width: 470px) {
+	.ButtonBar {
+		margin: 0;
+		padding-top: 8px;
+		padding-bottom: 4px;
+		
+		-webkit-box-orient: vertical;
+		flex-direction: column;
+	}
+	.ButtonBar--Form,
+	.ButtonBar--Form-Width-auto {
+		width: 100%;
+		margin: 0 0 8px 0;
+	}
+}

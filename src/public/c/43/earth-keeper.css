@@ -1,0 +1,22 @@
+.GameTeaser--Image-No-1 {
+	background-image: url('/c/43/mobile-screen-portrait1.jpg');
+	background-position: 50%;
+}
+
+/* smartphones landscape */
+@media (min-width: 470px) and (max-height: 480px) {
+	.GameTeaser--Image-No-1 {
+		background-image: url('/c/43/mobile-screen1.jpg');
+		background-position: center top;
+	}
+}
+
+/* tablets and desktops */
+@media (min-width: 640px) and (min-height: 480px) {
+	.GameTeaser--TitleHolder {
+		display: none;
+	}
+	.GameTeaser--Image-No-1 {
+		background-image: url('/c/43/screen1.jpg');
+	}
+}
